@@ -1,0 +1,11 @@
+az group create --name <resource_group_name> --location eastus
+
+az appservice plan create --name <api_plan_name> --resource-group <resource_group_name> --is-linux --location eastus --sku B1
+
+az webapp create --name <webapp_name> --resource-group <resource_group_name> --plan <api_plan_name> --deployment-container-image-name kennethreitz/httpbin:latest
+
+az webapp start --name <webapp_name> --resource-group <resource_group_name>
+
+az webapp show --name <webapp_name> --resource-group <resource_group_name>
+
+az group delete --name <resource_group_name> --no-wait --yes
