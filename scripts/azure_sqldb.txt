@@ -1,0 +1,13 @@
+az group create --name <resource_group_name> --location eastus
+
+az sql server create --name <sql_server_name> --resource-group <resource_group_name> --location eastus --admin-user <sql_admin_user_name> --admin-password <sql_admin_password>
+
+az sql server firewall-rule create --resource-group <resource_group_name> --server <sql_server_name> -n AllowYourIp --start-ip-address <start_ip_address> --end-ip-address <end_ip_address>
+
+az sql db create --resource-group <resource_group_name> --server <sql_server_name> --name <database_name> --edition Basic --zone-redundant false --license-type BasePrice
+
+az sql db show-connection-string --server <sql_server_name> --name <database_name> --client ado.net
+
+az sql db show --resource-group <resource_group_name> --server <sql_server_name>
+
+az sql server show --resource-group <resource_group_name> --name <sql_server_name>
