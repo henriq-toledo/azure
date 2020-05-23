@@ -1,0 +1,27 @@
+az group create --name <resource_group_name> --location westus
+
+az storage account create --name <storage_account_name> --resource-group <resource_group_name> --location eastus --access-tier Hot --kind StorageV2 --sku Standard_LRS
+
+az storage account show-connection-string --name <storage_account_name> --resource-group <resource_group_name>
+
+az keyvault create --name <keyvault_name> --resource-group <resource_group_name> --sku standard --location eastus --enable-soft-delete true
+
+az keyvault secret set --vault-name <keyvault_name> --name <keyvault_secret_name> --value "<storage_account_connection_string>"
+
+az keyvault secret show --name <keyvault_secret_name> --vault-name <keyvault_name>
+
+-- TODO create azure function CLI command
+
+az functionapp identity assign --name <funtion_name> --resource-group <resource_group_name>
+
+az functionapp identity show --name <funtion_name> --resource-group <resource_group_name>
+
+-- TODO must find a command to get the object id from the azure function and set in the --spn parameter
+
+az keyvault set-policy --name <keyvault_name> --resource-group <resource_group_name> --spn <object_id> --secret-permissions get
+
+az keyvault secret list --vault-name <keyvault_name>
+
+az keyvault show --name <keyvault_name> --resource-group <resource_group_name>
+
+az group delete --name <resource_group_name> --no-wait --yes
