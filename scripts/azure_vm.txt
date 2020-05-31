@@ -1,0 +1,5 @@
+az group create --name myResourceGroup --location eastus
+
+az vm create --resource-group myResourceGroup --name myVM --admin-username azureuser --license-type Windows_Client --image MicrosoftWindowsDesktop:Windows-10:19h1-ent:18362.720.2003120536
+
+az vm open-port --port 80 --resource-group myResourceGroup --name myVM
